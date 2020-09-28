@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Platforms>x64;x86</Platforms>
+    <Platforms>x86</Platforms>
     <Authors>Kapdap</Authors>
     <Company>Kapdap</Company>
     <Product>Martian Gothic: Unification WPF User Interface Plugin</Product>
