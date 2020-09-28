@@ -4,17 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc="clr-namespace:SRTPluginUIMGUWPF.Controls"
+        xmlns:ut="clr-namespace:SRTPluginUIMGUWPF.Utilities"
         xmlns:local="clr-namespace:SRTPluginUIMGUWPF"
         mc:Ignorable="d"
         Title="{Binding PluginTitle}"
+        Left="{ut:SettingBinding Left}"
+        Top="{ut:SettingBinding Top}"
         Width="216" Height="425"
         SizeToContent="WidthAndHeight"
         ResizeMode="NoResize"
         AllowsTransparency="True"
         WindowStyle="None"
         UseLayoutRounding="True"
+        LocationChanged="Window_LocationChanged"
         Closing="Window_Closing"
-        MouseDown="Window_MouseDown">
+        MouseDown="Window_MouseDown"
+        >
     <Window.Resources>
         <SolidColorBrush x:Key="WindowBackground"
                          Color="{Binding Options.Background}" />

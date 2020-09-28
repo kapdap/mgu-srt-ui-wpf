@@ -1,4 +1,5 @@
-﻿using SRTPluginUIMGUWPF.ViewModels;
+﻿using SRTPluginUIMGUWPF;
+using SRTPluginUIMGUWPF.ViewModels;
 using System;
 using System.Reflection;
 using System.Threading;
@@ -51,6 +52,8 @@ namespace SRTPluginUIMGUWPF
         {
             IsExiting = true;
 
+            Properties.Settings.Default.Save();
+
             try
             {
                 if (UIDispatcher != null)
@@ -86,7 +89,6 @@ namespace SRTPluginUIMGUWPF
         public static class Windows
         {
             private static MainWindow _main;
-
             public static MainWindow Main
             {
                 get
@@ -99,7 +101,6 @@ namespace SRTPluginUIMGUWPF
             }
 
             private static OptionsWindow _options;
-
             public static OptionsWindow Options
             {
                 get
@@ -112,7 +113,6 @@ namespace SRTPluginUIMGUWPF
             }
 
             private static AboutWindow _about;
-
             public static AboutWindow About
             {
                 get
