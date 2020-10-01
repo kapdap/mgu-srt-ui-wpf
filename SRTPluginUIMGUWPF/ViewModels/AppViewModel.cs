@@ -21,33 +21,21 @@ namespace SRTPluginUIMGUWPF.ViewModels
         public GameMemoryMGU GameMemory
         {
             get => _gameMemory;
-            private set
-            {
-                _gameMemory = value;
-                OnPropertyChanged();
-            }
+            private set => SetField(ref _gameMemory, value);
         }
 
         private CharacterModel _characters;
         public CharacterModel Characters
         {
             get => _characters;
-            private set
-            {
-                _characters = value;
-                OnPropertyChanged();
-            }
+            private set => SetField(ref _characters, value);
         }
 
         private CharacterItem _equipment;
         public CharacterItem Equipment
         {
             get => _equipment;
-            private set
-            {
-                _equipment = value;
-                OnPropertyChanged();
-            }
+            private set => SetField(ref _equipment, value);
         }
 
         public void Initalize(GameMemoryMGU gameMemory)

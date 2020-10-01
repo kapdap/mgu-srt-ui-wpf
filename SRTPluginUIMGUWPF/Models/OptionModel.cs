@@ -22,32 +22,24 @@ namespace SRTPluginUIMGUWPF.Models
             }
             set
             {
-                if (_alwaysOnTop != value)
-                {
-                    _alwaysOnTop = value;
+                if (SetField(ref _alwaysOnTop, value))
                     _writeKey.SetValue("AlwaysOnTop", value ? 1 : 0, RegistryValueKind.DWord);
-                    OnPropertyChanged();
-                }
             }
         }
 
-        private bool? _showTitlebar;
-        public bool ShowTitlebar
+        private bool? _attachToWindow;
+        public bool AttachToWindow
         {
             get
             {
-                if (_showTitlebar == null)
-                    _showTitlebar = RegistryHelper.GetBoolValue(_readKey, "ShowTitlebar", false);
-                return (bool)_showTitlebar;
+                if (_attachToWindow == null)
+                    _attachToWindow = RegistryHelper.GetBoolValue(_readKey, "AttachToWindow", false);
+                return (bool)_attachToWindow;
             }
             set
             {
-                if (_showTitlebar != value)
-                {
-                    _showTitlebar = value;
-                    _writeKey.SetValue("ShowTitlebar", value ? 1 : 0, RegistryValueKind.DWord);
-                    OnPropertyChanged();
-                }
+                if (SetField(ref _attachToWindow, value))
+                    _writeKey.SetValue("AttachToWindow", value ? 1 : 0, RegistryValueKind.DWord);
             }
         }
 
@@ -65,12 +57,8 @@ namespace SRTPluginUIMGUWPF.Models
             }
             set
             {
-                if (_background != value)
-                {
-                    _background = value;
+                if (SetField(ref _background, value))
                     _writeKey.SetValue("Background", BitConverter.ToInt32(new byte[4] { value.B, value.G, value.R, value.A }), RegistryValueKind.DWord);
-                    OnPropertyChanged();
-                }
             }
         }
 
@@ -85,12 +73,8 @@ namespace SRTPluginUIMGUWPF.Models
             }
             set
             {
-                if (_transparent != value)
-                {
-                    _transparent = value;
+                if (SetField(ref _transparent, value))
                     _writeKey.SetValue("Transparent", value ? 1 : 0, RegistryValueKind.DWord);
-                    OnPropertyChanged();
-                }
             }
         }
 
@@ -115,9 +99,9 @@ namespace SRTPluginUIMGUWPF.Models
                     _opacity = Math.Max(value, 0.05);
                     _opacity = Math.Min((double)_opacity, 1.00);
                     _opacity = Math.Round((double)_opacity, 2);
+                    OnPropertyChanged();
 
                     _writeKey.SetValue("Opacity", _opacity, RegistryValueKind.String);
-                    OnPropertyChanged();
                 }
             }
         }
@@ -143,9 +127,9 @@ namespace SRTPluginUIMGUWPF.Models
                     _charactersScale = Math.Max(value, 0.50);
                     _charactersScale = Math.Min((double)_charactersScale, 1.00);
                     _charactersScale = Math.Round((double)_charactersScale, 2);
+                    OnPropertyChanged();
 
                     _writeKey.SetValue("CharactersScale", _charactersScale, RegistryValueKind.String);
-                    OnPropertyChanged();
                 }
             }
         }
@@ -171,9 +155,9 @@ namespace SRTPluginUIMGUWPF.Models
                     _textScale = Math.Max(value, 0.50);
                     _textScale = Math.Min((double)_textScale, 1.00);
                     _textScale = Math.Round((double)_textScale, 2);
+                    OnPropertyChanged();
 
                     _writeKey.SetValue("TextScale", _textScale, RegistryValueKind.String);
-                    OnPropertyChanged();
                 }
             }
         }
@@ -199,10 +183,26 @@ namespace SRTPluginUIMGUWPF.Models
                     _enemyScale = Math.Max(value, 0.50);
                     _enemyScale = Math.Min((double)_enemyScale, 1.00);
                     _enemyScale = Math.Round((double)_enemyScale, 2);
+                    OnPropertyChanged();
 
                     _writeKey.SetValue("EnemyScale", _enemyScale, RegistryValueKind.String);
-                    OnPropertyChanged();
                 }
+            }
+        }
+
+        private bool? _showTitlebar;
+        public bool ShowTitlebar
+        {
+            get
+            {
+                if (_showTitlebar == null)
+                    _showTitlebar = RegistryHelper.GetBoolValue(_readKey, "ShowTitlebar", false);
+                return (bool)_showTitlebar;
+            }
+            set
+            {
+                if (SetField(ref _showTitlebar, value))
+                    _writeKey.SetValue("ShowTitlebar", value ? 1 : 0, RegistryValueKind.DWord);
             }
         }
 
@@ -217,12 +217,8 @@ namespace SRTPluginUIMGUWPF.Models
             }
             set
             {
-                if (_showTimer != value)
-                {
-                    _showTimer = value;
+                if (SetField(ref _showTimer, value))
                     _writeKey.SetValue("ShowTimer", value ? 1 : 0, RegistryValueKind.DWord);
-                    OnPropertyChanged();
-                }
             }
         }
 
@@ -237,12 +233,8 @@ namespace SRTPluginUIMGUWPF.Models
             }
             set
             {
-                if (_showStatistics != value)
-                {
-                    _showStatistics = value;
+                if (SetField(ref _showStatistics, value))
                     _writeKey.SetValue("ShowStatistics", value ? 1 : 0, RegistryValueKind.DWord);
-                    OnPropertyChanged();
-                }
             }
         }
 
@@ -257,12 +249,8 @@ namespace SRTPluginUIMGUWPF.Models
             }
             set
             {
-                if (_showInventory != value)
-                {
-                    _showInventory = value;
+                if (SetField(ref _showInventory, value))
                     _writeKey.SetValue("ShowInventory", value ? 1 : 0, RegistryValueKind.DWord);
-                    OnPropertyChanged();
-                }
             }
         }
 
@@ -277,12 +265,8 @@ namespace SRTPluginUIMGUWPF.Models
             }
             set
             {
-                if (_showEquipment != value)
-                {
-                    _showEquipment = value;
+                if (SetField(ref _showEquipment, value))
                     _writeKey.SetValue("ShowEquipment", value ? 1 : 0, RegistryValueKind.DWord);
-                    OnPropertyChanged();
-                }
             }
         }
 
@@ -297,12 +281,8 @@ namespace SRTPluginUIMGUWPF.Models
             }
             set
             {
-                if (_showEnemy != value)
-                {
-                    _showEnemy = value;
+                if (SetField(ref _showEnemy, value))
                     _writeKey.SetValue("ShowEnemy", value ? 1 : 0, RegistryValueKind.DWord);
-                    OnPropertyChanged();
-                }
             }
         }
 
@@ -317,12 +297,8 @@ namespace SRTPluginUIMGUWPF.Models
             }
             set
             {
-                if (_debug != value)
-                {
-                    _debug = value;
+                if (SetField(ref _debug, value))
                     _writeKey.SetValue("Debug", value ? 1 : 0, RegistryValueKind.DWord);
-                    OnPropertyChanged();
-                }
             }
         }
 
@@ -337,12 +313,8 @@ namespace SRTPluginUIMGUWPF.Models
             }
             set
             {
-                if (_debugCharacters != value)
-                {
-                    _debugCharacters = value;
+                if (SetField(ref _debugCharacters, value))
                     _writeKey.SetValue("DebugCharacters", value ? 1 : 0, RegistryValueKind.DWord);
-                    OnPropertyChanged();
-                }
             }
         }
 
@@ -357,12 +329,8 @@ namespace SRTPluginUIMGUWPF.Models
             }
             set
             {
-                if (_debugEnemy != value)
-                {
-                    _debugEnemy = value;
+                if (SetField(ref _debugEnemy, value))
                     _writeKey.SetValue("DebugEnemy", value ? 1 : 0, RegistryValueKind.DWord);
-                    OnPropertyChanged();
-                }
             }
         }
     }
