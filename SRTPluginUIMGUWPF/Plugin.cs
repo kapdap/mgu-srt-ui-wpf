@@ -1,5 +1,4 @@
-﻿using SRTPluginUIMGUWPF;
-using SRTPluginUIMGUWPF.ViewModels;
+﻿using SRTPluginUIMGUWPF.ViewModels;
 using System;
 using System.Reflection;
 using System.Threading;
@@ -13,7 +12,7 @@ namespace SRTPluginUIMGUWPF
         public static bool IsExiting { get; private set; }
 
         public static PluginUI PluginUI { get; private set; }
-        public static Dispatcher UIDispatcher { get; private set; }
+        public static Dispatcher DispatcherUI { get; private set; }
 
         public static readonly string Name = Assembly.GetExecutingAssembly().GetName().Name.ToString();
         public static readonly string Version = String.Format("v{0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
@@ -27,8 +26,8 @@ namespace SRTPluginUIMGUWPF
                 // https://stackoverflow.com/a/36006943
                 Thread t = new Thread(new ThreadStart(() =>
                 {
-                    UIDispatcher = Dispatcher.CurrentDispatcher;
-                    UIDispatcher.Invoke(delegate
+                    DispatcherUI = Dispatcher.CurrentDispatcher;
+                    DispatcherUI.Invoke(delegate
                     {
                         Windows.Main.Show();
                     });
@@ -56,14 +55,14 @@ namespace SRTPluginUIMGUWPF
 
             try
             {
-                if (UIDispatcher != null)
+                if (DispatcherUI != null)
                 {
-                    UIDispatcher.Invoke(delegate
+                    DispatcherUI.Invoke(delegate
                     {
                         Windows.CloseAll();
                         Models.DisposeAll();
                     });
-                    UIDispatcher.InvokeShutdown();
+                    DispatcherUI.InvokeShutdown();
                 }
 
                 return 0;
@@ -75,7 +74,7 @@ namespace SRTPluginUIMGUWPF
             }
             finally
             {
-                UIDispatcher = null;
+                DispatcherUI = null;
                 IsExiting = false;
             }
         }
@@ -155,7 +154,6 @@ namespace SRTPluginUIMGUWPF
         public static class Models
         {
             private static AppViewModel _appView;
-
             public static AppViewModel AppView
             {
                 get
