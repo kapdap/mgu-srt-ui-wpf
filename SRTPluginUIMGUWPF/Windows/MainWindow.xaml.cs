@@ -20,6 +20,9 @@ namespace SRTPluginUIMGUWPF
 
         private IntPtr _windowEventHook;
         private GCHandle _windowEventGCHandle;
+        private double _windowYoffset;
+        private double _windowXoffset;
+        private bool _isAttachWindowUpdate;
 
         public MainWindow()
         {
@@ -30,7 +33,6 @@ namespace SRTPluginUIMGUWPF
             _options = Plugin.Models.AppView.Options;
 
             _options.PropertyChanged += Options_PropertyChanged;
-
             ToggleAttachWindow();
         }
 
@@ -55,8 +57,13 @@ namespace SRTPluginUIMGUWPF
         private void CloseWindowButton_Click(object sender, RoutedEventArgs e) =>
             Close();
 
-        private void Window_LocationChanged(object sender, EventArgs e) =>
+        private void Window_LocationChanged(object sender, EventArgs e)
+        {
             Properties.Settings.Default.Save();
+
+            if (!_isAttachWindowUpdate)
+                UpdateAttachWindowOffset();
+        }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -71,19 +78,31 @@ namespace SRTPluginUIMGUWPF
             Plugin.Exit();
         }
 
-        protected void AttactToWindow(IntPtr hWnd)
+        protected void UpdateAttachWindowPosition()
         {
-            Utilities.Rect rect = WinEventHook.GetWindowRect(hWnd);
+            Utilities.Rect rect = WinEventHook.GetWindowRect(_gameMemory.Process.WindowHandle);
 
-            Top = rect.Top;
-            Left = rect.Left - Width;
+            _isAttachWindowUpdate = true;
+            Top = rect.Top - _windowYoffset;
+            Left = rect.Left - _windowXoffset;
+            _isAttachWindowUpdate = false;
+        }
+
+        protected void UpdateAttachWindowOffset()
+        {
+            Utilities.Rect rect = WinEventHook.GetWindowRect(_gameMemory.Process.WindowHandle);
+
+            _windowYoffset = rect.Top - Top;
+            _windowXoffset = rect.Left - Left;
         }
 
         protected void ToggleAttachWindow()
         {
             if (_options.AttachToWindow)
             {
-                AttactToWindow(_gameMemory.Process.WindowHandle);
+                UpdateAttachWindowOffset();
+                UpdateAttachWindowPosition();
+
                 EnableAttactWindow();
             }
             else
@@ -97,15 +116,12 @@ namespace SRTPluginUIMGUWPF
 
             try
             {
-                Dispatcher.CurrentDispatcher.Invoke(delegate
-                {
-                    WinEventHook.WinEventDelegate windowEventDelegate = new WinEventHook.WinEventDelegate(AttachWindowEventCallback);
-                    _windowEventGCHandle = GCHandle.Alloc(windowEventDelegate);
-                    _windowEventHook = WinEventHook.WinEventHookOne(WinEventHook.SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE,
-                                                            windowEventDelegate,
-                                                            (uint)_gameMemory.Process.Id,
-                                                            WinEventHook.GetWindowThread(_gameMemory.Process.WindowHandle));
-                });
+                WinEventHook.WinEventDelegate windowEventDelegate = new WinEventHook.WinEventDelegate(AttachWindowEventCallback);
+                _windowEventGCHandle = GCHandle.Alloc(windowEventDelegate);
+                _windowEventHook = WinEventHook.WinEventHookOne(WinEventHook.SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE,
+                                                        windowEventDelegate,
+                                                        (uint)_gameMemory.Process.Id,
+                                                        WinEventHook.GetWindowThread(_gameMemory.Process.WindowHandle));
             }
             catch (Exception ex)
             {
@@ -147,7 +163,7 @@ namespace SRTPluginUIMGUWPF
             if (hWnd == _gameMemory.Process.WindowHandle &&
                 eventType == WinEventHook.SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE &&
                 idObject == WinEventHook.SWEH_ObjectId.OBJID_WINDOW)
-                AttactToWindow(hWnd);
+                UpdateAttachWindowPosition();
         }
     }
 }
