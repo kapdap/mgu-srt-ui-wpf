@@ -24,9 +24,10 @@
                 <StackPanel Width="155">
                     <GroupBox Header="Window" Padding="5">
                         <StackPanel>
-                            <CheckBox Content="Always on Top" IsChecked="{Binding Options.AlwaysOnTop}"  ToolTip="Keeps the main window on top of all other windows." Margin="0,0,0,10" />
-                            <CheckBox Content="Show Titlebar" IsChecked="{Binding Options.ShowTitlebar}" ToolTip="Show/hide the main window titlebar."                Margin="0,0,0,10" />
-                            <CheckBox Content="Transparent"   IsChecked="{Binding Options.Transparent}"  ToolTip="Set the main window background to transparent." />
+                            <CheckBox Content="Always on Top"    IsChecked="{Binding Options.AlwaysOnTop}"    ToolTip="Keeps the main window on top of all other windows." Margin="0,0,0,10" />
+                            <CheckBox Content="Attach to Window" IsChecked="{Binding Options.AttachToWindow}" ToolTip="Attach SRT window to the game window."              Margin="0,0,0,10" />
+                            <CheckBox Content="Show Titlebar"    IsChecked="{Binding Options.ShowTitlebar}"   ToolTip="Show/hide the main window titlebar."                Margin="0,0,0,10" />
+                            <CheckBox Content="Transparent"      IsChecked="{Binding Options.Transparent}"    ToolTip="Set the main window background to transparent." />
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Opacity" Padding="5">
