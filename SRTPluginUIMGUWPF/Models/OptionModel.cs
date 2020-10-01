@@ -115,7 +115,7 @@ namespace SRTPluginUIMGUWPF.Models
                     _charactersScale = RegistryHelper.GetDoubleValue(_readKey, "CharactersScale", 1.0d);
 
                 _charactersScale = Math.Max((double)_charactersScale, 0.50);
-                _charactersScale = Math.Min((double)_charactersScale, 1.00);
+                _charactersScale = Math.Min((double)_charactersScale, 2.00);
                 _charactersScale = Math.Round((double)_charactersScale, 2);
 
                 return (double)_charactersScale;
@@ -125,7 +125,7 @@ namespace SRTPluginUIMGUWPF.Models
                 if (_charactersScale != value)
                 {
                     _charactersScale = Math.Max(value, 0.50);
-                    _charactersScale = Math.Min((double)_charactersScale, 1.00);
+                    _charactersScale = Math.Min((double)_charactersScale, 2.00);
                     _charactersScale = Math.Round((double)_charactersScale, 2);
                     OnPropertyChanged();
 
@@ -143,7 +143,7 @@ namespace SRTPluginUIMGUWPF.Models
                     _textScale = RegistryHelper.GetDoubleValue(_readKey, "TextScale", 1.0d);
 
                 _textScale = Math.Max((double)_textScale, 0.50);
-                _textScale = Math.Min((double)_textScale, 1.00);
+                _textScale = Math.Min((double)_textScale, 2.00);
                 _textScale = Math.Round((double)_textScale, 2);
 
                 return (double)_textScale;
@@ -153,7 +153,7 @@ namespace SRTPluginUIMGUWPF.Models
                 if (_textScale != value)
                 {
                     _textScale = Math.Max(value, 0.50);
-                    _textScale = Math.Min((double)_textScale, 1.00);
+                    _textScale = Math.Min((double)_textScale, 2.00);
                     _textScale = Math.Round((double)_textScale, 2);
                     OnPropertyChanged();
 
@@ -171,7 +171,7 @@ namespace SRTPluginUIMGUWPF.Models
                     _enemyScale = RegistryHelper.GetDoubleValue(_readKey, "EnemyScale", 1.0d);
 
                 _enemyScale = Math.Max((double)_enemyScale, 0.50);
-                _enemyScale = Math.Min((double)_enemyScale, 1.00);
+                _enemyScale = Math.Min((double)_enemyScale, 2.00);
                 _enemyScale = Math.Round((double)_enemyScale, 2);
 
                 return (double)_enemyScale;
@@ -181,7 +181,7 @@ namespace SRTPluginUIMGUWPF.Models
                 if (_enemyScale != value)
                 {
                     _enemyScale = Math.Max(value, 0.50);
-                    _enemyScale = Math.Min((double)_enemyScale, 1.00);
+                    _enemyScale = Math.Min((double)_enemyScale, 2.00);
                     _enemyScale = Math.Round((double)_enemyScale, 2);
                     OnPropertyChanged();
 

@@ -25,7 +25,7 @@
                     <GroupBox Header="Window" Padding="5">
                         <StackPanel>
                             <CheckBox Content="Always on Top"    IsChecked="{Binding Options.AlwaysOnTop}"    ToolTip="Keeps the main window on top of all other windows." Margin="0,0,0,10" />
-                            <CheckBox Content="Attach to Window" IsChecked="{Binding Options.AttachToWindow}" ToolTip="Attach SRT window to the game window."              Margin="0,0,0,10" />
+                            <CheckBox Content="Attach to Window" IsChecked="{Binding Options.AttachToWindow}" ToolTip="SRT window follows the game window when moved."     Margin="0,0,0,10" />
                             <CheckBox Content="Show Titlebar"    IsChecked="{Binding Options.ShowTitlebar}"   ToolTip="Show/hide the main window titlebar."                Margin="0,0,0,10" />
                             <CheckBox Content="Transparent"      IsChecked="{Binding Options.Transparent}"    ToolTip="Set the main window background to transparent." />
                         </StackPanel>
@@ -67,7 +67,7 @@
                                         Value="{Binding Options.CharactersScale}"
                                         ToolTip="Move slider to adjust scale of the characters panel."
                                         Minimum="0.5"
-                                        Maximum="1"
+                                        Maximum="2"
                                         TickFrequency="0.1"
                                         TickPlacement="BottomRight"
                                         Margin="0,0,5,0" />
@@ -83,7 +83,7 @@
                                         Value="{Binding Options.TextScale}"
                                         ToolTip="Move slider to adjust scale of the timer panel."
                                         Minimum="0.5"
-                                        Maximum="1"
+                                        Maximum="2"
                                         TickFrequency="0.1"
                                         TickPlacement="BottomRight"
                                         Margin="0,0,5,0" />
@@ -99,7 +99,7 @@
                                         Value="{Binding Options.EnemyScale}"
                                         ToolTip="Move slider to adjust scale of the enemy panel."
                                         Minimum="0.5"
-                                        Maximum="1"
+                                        Maximum="2"
                                         TickFrequency="0.1"
                                         TickPlacement="BottomRight"
                                         Margin="0,0,5,0" />
