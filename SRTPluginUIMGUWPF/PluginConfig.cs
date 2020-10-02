@@ -37,44 +37,28 @@ namespace SRTPluginUIMGUWPF
         private double _opacity = 1d;
         public double Opacity
         {
-            get
-            {
-                SetField(ref _opacity, GetRange(_opacity, 0.05, 1d, 2));
-                return _opacity;
-            }
+            get => _opacity;
             set => SetField(ref _opacity, GetRange(value, 0.05, 1d, 2));
         }
 
         private double _charactersScale = 1d;
         public double CharactersScale
         {
-            get
-            {
-                SetField(ref _charactersScale, GetRange(_charactersScale, 0.5, 2d, 2));
-                return _charactersScale;
-            }
+            get => _charactersScale;
             set => SetField(ref _charactersScale, GetRange(value, 0.5, 2d, 2));
         }
 
         private double _textScale = 1d;
         public double TextScale
         {
-            get
-            {
-                SetField(ref _textScale, GetRange(_textScale, 0.5, 2d, 2));
-                return _textScale;
-            }
+            get => _textScale;
             set => SetField(ref _textScale, GetRange(value, 0.5, 2d, 2));
         }
 
         private double _enemyScale = 1d;
         public double EnemyScale
         {
-            get
-            {
-                SetField(ref _enemyScale, GetRange(_enemyScale, 0.5, 2d, 2));
-                return _enemyScale;
-            }
+            get => _enemyScale;
             set => SetField(ref _enemyScale, GetRange(value, 0.5, 2d, 2));
         }
 
