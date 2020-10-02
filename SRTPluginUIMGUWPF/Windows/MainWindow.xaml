@@ -10,7 +10,7 @@
         Title="{Binding PluginTitle}"
         Left="{ut:SettingBinding Left}"
         Top="{ut:SettingBinding Top}"
-        Width="216" Height="425"
+        Width="216"
         SizeToContent="WidthAndHeight"
         ResizeMode="NoResize"
         AllowsTransparency="True"
@@ -218,7 +218,6 @@
 
                 <StackPanel Name="EnemyPanel"
                             Width="216"
-                            Height="261"
                             HorizontalAlignment="Left"
                             Style="{StaticResource EnemyPanelStyle}"
                             ScrollViewer.VerticalScrollBarVisibility="Disabled">
@@ -238,12 +237,9 @@
                                         <Style TargetType="{x:Type Grid}">
                                             <Setter Property="ToolTip" Value="{Binding Name}" />
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding IsAlive}" Value="False">
-                                                    <Setter Property="Visibility" Value="Collapsed" />
-                                                </DataTrigger>
                                                 <DataTrigger Binding="{Binding DataContext.Options.DebugEnemy, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Value="True">
                                                     <Setter Property="Visibility" Value="Visible" />
-                                                    <Setter Property="ToolTip" Value="CurrentHP:MaximumHP:IsEmpty:IsAlive:Type" />
+                                                    <Setter Property="ToolTip" Value="Index:CurrentHP:MaximumHP:IsAlive:IsEmpty:RoomId:Type" />
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding IsEmpty}" Value="True">
                                                     <Setter Property="Visibility" Value="Collapsed" />
