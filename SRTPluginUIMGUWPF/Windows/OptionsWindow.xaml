@@ -12,8 +12,8 @@
         UseLayoutRounding="True"
         WindowStyle="None"
         Background="#f0f0f0"
-        WindowStartupLocation="CenterOwner"
-        Closing="Window_Closing">
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing" Topmost="True">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
     </WindowChrome.WindowChrome>
