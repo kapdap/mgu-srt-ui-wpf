@@ -20,8 +20,6 @@ namespace SRTPluginUIMGUWPF
 
         private IntPtr _windowEventHook;
         private GCHandle _windowEventGCHandle;
-        private double _windowYoffset;
-        private double _windowXoffset;
         private bool _isAttachWindowUpdate;
 
         public MainWindow()
@@ -33,7 +31,7 @@ namespace SRTPluginUIMGUWPF
             _options = Plugin.Models.AppView.Options;
 
             _options.PropertyChanged += Options_PropertyChanged;
-            ToggleAttachWindow();
+            ToggleAttachWindow(true);
         }
 
         private void Options_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -59,10 +57,10 @@ namespace SRTPluginUIMGUWPF
 
         private void Window_LocationChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Save();
-
             if (!_isAttachWindowUpdate)
                 UpdateAttachWindowOffset();
+
+            Properties.Settings.Default.Save();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -83,8 +81,8 @@ namespace SRTPluginUIMGUWPF
             Utilities.Rect rect = WinEventHook.GetWindowRect(_gameMemory.Process.WindowHandle);
 
             _isAttachWindowUpdate = true;
-            Top = rect.Top - _windowYoffset;
-            Left = rect.Left - _windowXoffset;
+            Top = rect.Top - Properties.Settings.Default.YOffset;
+            Left = rect.Left - Properties.Settings.Default.XOffset;
             _isAttachWindowUpdate = false;
         }
 
@@ -92,15 +90,17 @@ namespace SRTPluginUIMGUWPF
         {
             Utilities.Rect rect = WinEventHook.GetWindowRect(_gameMemory.Process.WindowHandle);
 
-            _windowYoffset = rect.Top - Top;
-            _windowXoffset = rect.Left - Left;
+            Properties.Settings.Default.YOffset = (int)(rect.Top - Top);
+            Properties.Settings.Default.XOffset = (int)(rect.Left - Left);
         }
 
-        protected void ToggleAttachWindow()
+        protected void ToggleAttachWindow(bool isInit = false)
         {
             if (_options.AttachToWindow)
             {
-                UpdateAttachWindowOffset();
+                if (!isInit)
+                    UpdateAttachWindowOffset();
+
                 UpdateAttachWindowPosition();
 
                 EnableAttactWindow();
