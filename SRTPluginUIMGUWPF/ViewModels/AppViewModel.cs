@@ -15,7 +15,7 @@ namespace SRTPluginUIMGUWPF.ViewModels
         public string PluginProvider => Plugin.PluginUI.RequiredProvider;
         public string PluginTitle => String.Format("MGU SRT {0}", Plugin.Version);
 
-        public OptionModel Options { get; } = new OptionModel();
+        public PluginConfig Options { get; } = Plugin.Config;
 
         private GameMemoryMGU _gameMemory;
         public GameMemoryMGU GameMemory

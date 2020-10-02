@@ -11,6 +11,7 @@ namespace SRTPluginUIMGUWPF
     {
         public static bool IsExiting { get; private set; }
 
+        public static PluginConfig Config { get; private set; }
         public static PluginUI PluginUI { get; private set; }
         public static Dispatcher DispatcherUI { get; private set; }
 
@@ -20,6 +21,7 @@ namespace SRTPluginUIMGUWPF
         public static int Initialize(PluginUI plugin)
         {
             PluginUI = plugin;
+            Config = PluginUI.LoadConfiguration<PluginConfig>();
 
             try
             {
@@ -51,6 +53,7 @@ namespace SRTPluginUIMGUWPF
         {
             IsExiting = true;
 
+            PluginUI.SaveConfiguration(Config);
             Properties.Settings.Default.Save();
 
             try

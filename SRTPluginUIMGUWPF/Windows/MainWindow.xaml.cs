@@ -16,7 +16,7 @@ namespace SRTPluginUIMGUWPF
     public partial class MainWindow : Window
     {
         private IGameMemoryMGU _gameMemory;
-        private OptionModel _options;
+        private PluginConfig _options;
 
         private IntPtr _windowEventHook;
         private GCHandle _windowEventGCHandle;
