@@ -1,5 +1,6 @@
 ﻿using SRTPluginUIMGUWPF.ViewModels;
 using System;
+using System.ComponentModel;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
@@ -21,7 +22,9 @@ namespace SRTPluginUIMGUWPF
         public static int Initialize(PluginUI plugin)
         {
             PluginUI = plugin;
+
             Config = PluginUI.LoadConfiguration<PluginConfig>();
+            Config.PropertyChanged += ChangedConfiguration;
 
             try
             {
@@ -56,6 +59,9 @@ namespace SRTPluginUIMGUWPF
             PluginUI.SaveConfiguration(Config);
             Properties.Settings.Default.Save();
 
+            try { Config.PropertyChanged -= ChangedConfiguration; }
+            catch(Exception) { }
+
             try
             {
                 if (DispatcherUI != null)
@@ -77,6 +83,7 @@ namespace SRTPluginUIMGUWPF
             }
             finally
             {
+                Config = null;
                 DispatcherUI = null;
                 IsExiting = false;
             }
@@ -87,6 +94,9 @@ namespace SRTPluginUIMGUWPF
 
         public static void ShowExceptionMessage(Exception ex) =>
             PluginUI.HostDelegates.ExceptionMessage(ex);
+
+        private static void ChangedConfiguration(object sender, PropertyChangedEventArgs e) =>
+            PluginUI.SaveConfiguration(Config);
 
         public static class Windows
         {
