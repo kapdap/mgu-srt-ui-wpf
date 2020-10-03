@@ -42,7 +42,7 @@ namespace SRTPluginUIMGUWPF
             URLHelper.OpenURL("https://github.com/Squirrelies/SRTHost");
 
         private void WebsiteLink_MouseUp(object sender, MouseButtonEventArgs e) =>
-            URLHelper.OpenURL("https://kapdap.github.io/mgu-cvx-srt/");
+            URLHelper.OpenURL("https://kapdap.github.io/mgu-srt/");
 
         private void GitHubLink_MouseUp(object sender, MouseButtonEventArgs e) =>
             URLHelper.OpenURL("https://github.com/kapdap/mgu-srt-ui-wpf");

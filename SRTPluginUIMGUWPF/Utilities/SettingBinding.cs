@@ -5,16 +5,11 @@ namespace SRTPluginUIMGUWPF.Utilities
 {
     public class SettingBinding : Binding
     {
-        public SettingBinding()
-        {
+        public SettingBinding() =>
             Initialize();
-        }
 
-        public SettingBinding(string path)
-            : base(path)
-        {
+        public SettingBinding(string path) : base(path) =>
             Initialize();
-        }
 
         private void Initialize()
         {
