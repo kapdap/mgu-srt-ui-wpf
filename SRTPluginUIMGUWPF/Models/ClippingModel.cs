@@ -36,18 +36,34 @@ namespace SRTPluginUIMGUWPF.Models
         public string Clipping =>
             String.Format("{0},{1},{2},{3}", X, Y, Width, Height);
 
+        public int ImageWidth { get; private set; } = 48;
+        public int ImageHeight { get; private set; } = 48;
+
+        public ClippingModel() { }
+
+        public ClippingModel(int imageWidth, int imageHeight)
+        {
+            ImageWidth = imageWidth;
+            ImageHeight = imageHeight;
+        }
+
         public void Update(int[] clip)
         {
-            _x = clip[0];
-            _y = clip[1];
-            _width = clip[2];
-            _height = clip[3];
+            X = clip[0];
+            Y = clip[1];
+            Width = clip[2];
+            Height = clip[3];
+        }
 
-            OnPropertyChanged("X");
-            OnPropertyChanged("Y");
-            OnPropertyChanged("Width");
-            OnPropertyChanged("Height");
-            OnPropertyChanged("Clipping");
+        public void Update(int column, int row, int columns = 1, int rows = 1) =>
+            Update(column, row, ImageWidth, ImageHeight, columns, rows);
+
+        public void Update(int column, int row, int width, int height, int columns = 1, int rows = 1)
+        {
+            X = width * column;
+            Y = height * row;
+            Width = width * columns;
+            Height = height * rows;
         }
     }
 }

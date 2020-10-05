@@ -1,6 +1,5 @@
 ﻿using SRTPluginProviderMGU.Enumerations;
 using SRTPluginProviderMGU.Models;
-using System;
 using System.ComponentModel;
 
 namespace SRTPluginUIMGUWPF.Models
@@ -24,7 +23,7 @@ namespace SRTPluginUIMGUWPF.Models
             }
         }
 
-		public ClippingModel Clipping { get; } = new ClippingModel();
+		public ClippingModel Clipping { get; } = new ClippingModel(ImageWidth, ImageHeight);
 
         public InventoryItem(InventoryEntry entry)
         {
@@ -36,885 +35,1155 @@ namespace SRTPluginUIMGUWPF.Models
 
         private void UpdatePropertyEvent(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "Type")
+            if (e.PropertyName == "Type" && e.PropertyName != "UpdateEntry")
 				UpdateClipping();
         }
 
-        private void UpdateClipping() =>
-			Clipping.Update(GetClipping());
-
-		private int[] GetClipping()
+		private void UpdateClipping()
 		{
 			switch (Entry.Type)
 			{
 				case ItemEnumeration.Door:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Helmet:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Panel:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.StorageHatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MainDoor:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.VacTube:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Computer:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Drawer:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Rover:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Cutter:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Microscope:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Fan:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Mood:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.SpiritusFireplace:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Chair:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Table:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Radio:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Lighter:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderAndrewMuir:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.FlareGun:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Scarab:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Tag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BenGunn:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Book:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NoteBabybug:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.DeadBody:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Biosensor:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Digicamera:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.HairClippers:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Flask:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BrownHerbs:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Newspaper:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.GardenClippers:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Container:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Gloves:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Adhesive:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Padlock:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MusicBox:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Dart:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Toy:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.GamesChest:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Crank:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.SoilScoop:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Slides:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Cannister:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Syringe:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Stethoscope:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.AlarmClock:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Elevator:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ElectronicScrewdriver:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MeasuringTape:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.DuctPanel:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.DuctEntrance:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Hacksaw:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MonkeyWrench:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Key:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Lenses:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.FlareBolts:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.DriveBelt:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ExerciseBike:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Lighter2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Cigarettes:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Watch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Satsuma:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NicotinePatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ContactLens:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Lipstick:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Booklet:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PhotoMatlock:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Letter:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.SilverBullet:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Wrapper:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BrownTag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Cable:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.LooseCable:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.GardenClippers2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.OilyRag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ControlPanel:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BlueTag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.GreenTagDorm1:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Corpse:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.YellowTag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.OrangeTag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PurpleTag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.GrayTag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.RedTag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.WhiteTag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BlackTag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.RainbowTag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.EvaSuit:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PopGun:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Piccolo:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Diabolus:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Dillinger:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NailGun:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.FlareGun2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.WeedKillerSprayGun:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Welder:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MartianRock:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.RockCutter:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ShapedRock:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.RockSculpture:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ReceptorPanel:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.GeneratorHood:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ChemicalCombiner:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MeltedFlask:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.FlaskNitroglycerine:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.SprayCartridgeAcid:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PiccoloAmmo:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.AirFilter:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.CleanAirFilter:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.VibroScourer:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.DrawerKey:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Rug:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Locker:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.SeveredHand:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.SunBed:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Biosensor2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PaperClip:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Notes:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Notes2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.SilverBell:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PalmtopComputer:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.DoorControl:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Babybug:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BabybugRemote:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Resonator:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Crate:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Explosives:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.DillingerAmmo:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ChemicalExtractor:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Antitoxin:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.HealthBoost:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Lichen:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NeedleAndThread:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BenGunnsHead:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.TrimorphedAnimals:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Switch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.HourglassEmpty:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Keypad:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Button:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Instrument:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.GreenTagDorm2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.GreenTagDorm3:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.GreenTagDorm4:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MetalCase:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Psionara:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PasscodeArboretum:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Desk:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.LaserScalpel:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Storeroom1Key:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Spectrometer:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Clothes:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NoteMrOba:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.CleaningFluid:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Jar:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Wool:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.DiabolusAmmo:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.RemoteControlSpiritus:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.DeflatedMarsHopper:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.DeskKey:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.SprayCartridgeEmpty:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Respirator:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BicyclePump:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Screwdriver:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NotesPickman:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Diary:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.GreenTag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.StudyDrawerKey:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.HorribleArm:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.AirlockDoor:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Detonator:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PrimedExplosives:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Fissure:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.HeartOfStone:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Wire:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Rock:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.StorageBox1:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Artifact:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.KeyMed:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.EvaSuit2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ElevatorDrive:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.SilverPlatter:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.RedSand:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BaconSlicer:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Graffiti:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ElevatorShaft:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ElevatorButton:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.TrimorphSample:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Centrifuge:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Thermaliser:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BloodSampleKarne:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BloodSampleKenzo:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BloodSampleMatlock:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.VirusAntidote:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MilkBloodSample:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.FleshHeart:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Obelisk:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ChargedChorus:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Altar:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ArkhamTag:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Crane:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.HydraulicPlatform:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.AlienBreastSac:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Generator:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.GeneratorCable:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.DeadBattery:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ChargedBattery:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.AlienMilk:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Breach:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MarsHopper:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Nails:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Checker:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Winch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Niche:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Membrane:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Radio2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.SmallHatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PsionCell:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Locker2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Hole:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Statue:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Vent:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Pit:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Screen:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Dartboard:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MorgueSlab:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Grave:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BloodTransfuser:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Painting:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Books:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PasscodeAirlock5:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PasscodeMainHatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.LockerKey:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Bible:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderDietaMentz:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Lockers:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NoteHolmes:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderAndreivitch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NoteBenGunn1:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.DormLocker:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderTierney:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NoteSuicide:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ErebusPasscode:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NoteAltar:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NotePowerCoreRequest:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NoteChorus:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PasscodeDowningStreet:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PumiceStone:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BakerStreetHatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.DowningStreetHatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BroadwayHatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.LonelyStreetHatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ParkLaneHatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.WallStreetHatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BoulevardStMichelHatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.ShuttleBayHatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.KremlinMainHatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.KremlinEmergencyHatch:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Printout:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderFelicci:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NoteBenGunn2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NoteBenGunn3:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.NoteBenGunn4:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.InvitiationBenGunn:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderMaiLin:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderDeborahTrask:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderIzumiKeiko:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderJeanMerrow:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderJonathonDarnley1:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderJonathonDarnley2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderLukeBarton:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderNadjaKerenski:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderRobertSeager:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.MicrocorderSimonFellner:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PhotoKenzo:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.HourglassFull:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.Sand:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PasscodeStoreroom2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.PalmtopComputer2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.BloodSampleBenGunn:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.StorageBox2:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.StorageBox3:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.StorageBox4:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 
 				case ItemEnumeration.None:
 				default:
-					return GenerateClipping(0, 0);
+					Clipping.Update(0, 0);
+					break;
 			}
 		}
-
-        private int[] GenerateClipping(int column, int row)
-        {
-            int[] clipping = new int[4];
-
-            clipping[0] = ImageWidth * column;
-            clipping[1] = ImageHeight * row;
-            clipping[2] = ImageWidth;
-            clipping[3] = ImageHeight;
-
-            return clipping;
-        }
     }
 }
