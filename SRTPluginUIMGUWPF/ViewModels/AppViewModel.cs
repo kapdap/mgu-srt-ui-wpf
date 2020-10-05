@@ -31,13 +31,6 @@ namespace SRTPluginUIMGUWPF.ViewModels
             private set => SetField(ref _characters, value);
         }
 
-        private CharacterItem _equipment;
-        public CharacterItem Equipment
-        {
-            get => _equipment;
-            private set => SetField(ref _equipment, value);
-        }
-
         public void Initalize(GameMemoryMGU gameMemory)
         {
             if (GameMemory != null)
@@ -46,7 +39,6 @@ namespace SRTPluginUIMGUWPF.ViewModels
             GameMemory = gameMemory;
 
             Characters = new CharacterModel(GameMemory.Characters);
-            //Equipment = new InventoryItem(GameMemory.Player.Equipment);
         }
     }
 }

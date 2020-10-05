@@ -10,6 +10,7 @@ namespace SRTPluginUIMGUWPF.Models
         public const int ImageHeight = 38;
 
         public CharacterEntry Entry { get; set; }
+        public InventoryModel Inventory { get; set; }
 
         public int ClipX { get; set; }
         public int ClipY { get; set; }
@@ -21,6 +22,8 @@ namespace SRTPluginUIMGUWPF.Models
         {
             Entry = entry;
             UpdateClipping();
+
+            Inventory = new InventoryModel(entry.Inventory);
         }
 
         private void UpdateClipping()
