@@ -37,7 +37,6 @@ namespace SRTPluginUIMGUWPF.ViewModels
                 return;
 
             GameMemory = gameMemory;
-
             Characters = new CharacterModel(GameMemory.Characters);
         }
     }

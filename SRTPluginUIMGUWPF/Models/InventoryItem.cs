@@ -24,75 +24,7 @@ namespace SRTPluginUIMGUWPF.Models
             }
         }
 
-        private int _clipX;
-        public int ClipX
-        {
-            get => _clipX;
-            set
-            {
-                if (_clipX != value)
-                {
-                    _clipX = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        private int _clipY;
-        public int ClipY
-        {
-            get => _clipY;
-            set
-            {
-                if (_clipY != value)
-                {
-                    _clipY = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        private int _clipWidth;
-        public int ClipWidth
-        {
-            get => _clipWidth;
-            set
-            {
-                if (_clipWidth != value)
-                {
-                    _clipWidth = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        private int _clipHeight;
-        public int ClipHeight
-        {
-            get => _clipHeight;
-            set
-            {
-                if (_clipHeight != value)
-                {
-                    _clipHeight = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        private string _clipping;
-        public string Clipping
-        {
-            get => _clipping;
-            set
-            {
-                if (_clipping != value)
-                {
-                    _clipping = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+		public ClippingModel Clipping { get; } = new ClippingModel();
 
         public InventoryItem(InventoryEntry entry)
         {
@@ -104,23 +36,12 @@ namespace SRTPluginUIMGUWPF.Models
 
         private void UpdatePropertyEvent(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName != "UpdateEntry")
-                return;
-
-            UpdateClipping();
+            if (e.PropertyName == "Type")
+				UpdateClipping();
         }
 
-        private void UpdateClipping()
-        {
-            int[] clipping = GetClipping();
-
-            ClipX = clipping[0];
-            ClipY = clipping[1];
-            ClipWidth = clipping[2];
-            ClipHeight = clipping[3];
-
-            Clipping = String.Format("{0},{1},{2},{3}", ClipX, ClipY, ClipWidth, ClipHeight);
-        }
+        private void UpdateClipping() =>
+			Clipping.Update(GetClipping());
 
 		private int[] GetClipping()
 		{

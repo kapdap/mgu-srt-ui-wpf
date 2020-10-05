@@ -12,11 +12,7 @@ namespace SRTPluginUIMGUWPF.Models
         public CharacterEntry Entry { get; set; }
         public InventoryModel Inventory { get; set; }
 
-        public int ClipX { get; set; }
-        public int ClipY { get; set; }
-        public int ClipWidth { get; set; }
-        public int ClipHeight { get; set; }
-        public string Clipping { get; set; }
+        public ClippingModel Clipping { get; } = new ClippingModel();
 
         public CharacterItem(CharacterEntry entry)
         {
@@ -26,17 +22,8 @@ namespace SRTPluginUIMGUWPF.Models
             Inventory = new InventoryModel(entry.Inventory);
         }
 
-        private void UpdateClipping()
-        {
-            int[] clipping = GetClipping();
-
-            ClipX = clipping[0];
-            ClipY = clipping[1];
-            ClipWidth = clipping[2];
-            ClipHeight = clipping[3];
-
-            Clipping = String.Format("{0},{1},{2},{3}", ClipX, ClipY, ClipWidth, ClipHeight);
-        }
+        private void UpdateClipping() =>
+            Clipping.Update(GetClipping());
 
         private int[] GetClipping()
         {
