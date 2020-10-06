@@ -28,14 +28,25 @@ namespace SRTPluginUIMGUWPF
             _gameMemory = Plugin.Models.AppView.GameMemory;
             _options = Plugin.Models.AppView.Options;
 
-            _options.PropertyChanged += Options_PropertyChanged;
             ToggleAttachWindow(true);
+
+            _options.PropertyChanged += Options_PropertyChanged;
+            _gameMemory.Process.PropertyChanged += Process_PropertyChanged;
         }
 
         private void Options_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "AttachToWindow")
                 ToggleAttachWindow();
+        }
+
+        private void Process_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "WindowHandle")
+                Plugin.DispatcherUI.Invoke(delegate
+                {
+                    ToggleAttachWindow(true);
+                });
         }
 
         private void OptionsMenuItem_Click(object sender, RoutedEventArgs e) =>
@@ -69,13 +80,23 @@ namespace SRTPluginUIMGUWPF
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
+            try { _options.PropertyChanged -= Options_PropertyChanged; }
+            catch (Exception) { }
+
+            try { _gameMemory.Process.PropertyChanged -= Process_PropertyChanged; }
+            catch (Exception) { }
+
             DisableAttactWindow();
+
             if (Plugin.IsExiting) return;
             Plugin.Exit();
         }
 
         protected void UpdateAttachWindowPosition()
         {
+            if (_gameMemory.Process.WindowHandle == IntPtr.Zero)
+                return;
+
             Utilities.Rect rect = WinEventHook.GetWindowRect(_gameMemory.Process.WindowHandle);
 
             _isAttachWindowUpdate = true;
@@ -86,6 +107,9 @@ namespace SRTPluginUIMGUWPF
 
         protected void UpdateAttachWindowOffset()
         {
+            if (_gameMemory.Process.WindowHandle == IntPtr.Zero)
+                return;
+
             Utilities.Rect rect = WinEventHook.GetWindowRect(_gameMemory.Process.WindowHandle);
 
             Properties.Settings.Default.YOffset = (int)(rect.Top - Top);
