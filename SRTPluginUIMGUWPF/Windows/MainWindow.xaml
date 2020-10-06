@@ -18,8 +18,7 @@
         UseLayoutRounding="True"
         LocationChanged="Window_LocationChanged"
         Closing="Window_Closing"
-        MouseDown="Window_MouseDown"
-        >
+        MouseDown="Window_MouseDown">
     <Window.Resources>
         <SolidColorBrush x:Key="WindowBackground"
                          Color="{Binding Options.Background}" />

@@ -23,7 +23,7 @@ namespace SRTPluginUIMGUWPF
 
         public int ReceiveData(object gameMemory)
         {
-            Plugin.Models.AppView.Initalize((GameMemoryMGU)gameMemory);
+            Plugin.Models.AppView.Initalize((IGameMemoryMGU)gameMemory);
             return 0;
         }
     }

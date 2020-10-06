@@ -17,8 +17,8 @@ namespace SRTPluginUIMGUWPF.ViewModels
 
         public PluginConfig Options { get; } = Plugin.Config;
 
-        private GameMemoryMGU _gameMemory;
-        public GameMemoryMGU GameMemory
+        private IGameMemoryMGU _gameMemory;
+        public IGameMemoryMGU GameMemory
         {
             get => _gameMemory;
             private set => SetField(ref _gameMemory, value);
@@ -31,13 +31,22 @@ namespace SRTPluginUIMGUWPF.ViewModels
             private set => SetField(ref _characters, value);
         }
 
-        public void Initalize(GameMemoryMGU gameMemory)
+        private CharacterItem _character;
+        public CharacterItem Character
+        {
+            get => _character;
+            private set => SetField(ref _character, value);
+        }
+
+        public void Initalize(IGameMemoryMGU gameMemory)
         {
             if (GameMemory != null)
                 return;
 
             GameMemory = gameMemory;
+
             Characters = new CharacterModel(GameMemory.Characters);
+            Character = new CharacterItem(GameMemory.State.CurrentCharacter);
         }
     }
 }

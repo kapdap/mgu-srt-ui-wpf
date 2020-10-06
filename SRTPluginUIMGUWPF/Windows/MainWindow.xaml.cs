@@ -1,12 +1,10 @@
 ﻿using SRTPluginProviderMGU;
-using SRTPluginUIMGUWPF.Models;
 using SRTPluginUIMGUWPF.Utilities;
 using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace SRTPluginUIMGUWPF
 {

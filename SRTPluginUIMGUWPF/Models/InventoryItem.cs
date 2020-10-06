@@ -9,19 +9,7 @@ namespace SRTPluginUIMGUWPF.Models
         public const int ImageWidth = 48;
         public const int ImageHeight = 48;
 
-        private InventoryEntry _entry;
-        public InventoryEntry Entry
-        {
-            get => _entry;
-            set
-            {
-                if (!value.Equals(_entry))
-                {
-                    _entry = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+		public InventoryEntry Entry { get; set; }
 
 		public ClippingModel Clipping { get; } = new ClippingModel(ImageWidth, ImageHeight);
 
