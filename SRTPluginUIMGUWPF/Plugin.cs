@@ -24,7 +24,7 @@ namespace SRTPluginUIMGUWPF
             PluginUI = plugin;
 
             Config = PluginUI.LoadConfiguration<PluginConfig>();
-            Config.PropertyChanged += ChangedConfiguration;
+            Config.PropertyChanged += Config_PropertyChanged;
 
             try
             {
@@ -32,10 +32,7 @@ namespace SRTPluginUIMGUWPF
                 Thread t = new Thread(new ThreadStart(() =>
                 {
                     DispatcherUI = Dispatcher.CurrentDispatcher;
-                    DispatcherUI.Invoke(delegate
-                    {
-                        Windows.Main.Show();
-                    });
+                    DispatcherUI.Invoke(delegate { Windows.ReopenMain(); });
                     Dispatcher.Run();
                 }));
 
@@ -56,11 +53,15 @@ namespace SRTPluginUIMGUWPF
         {
             IsExiting = true;
 
-            PluginUI.SaveConfiguration(Config);
-            Properties.Settings.Default.Save();
+            if (Config != null)
+            {
+                PluginUI.SaveConfiguration(Config);
 
-            try { Config.PropertyChanged -= ChangedConfiguration; }
-            catch(Exception) { }
+                try { Config.PropertyChanged -= Config_PropertyChanged; }
+                catch (Exception) { }
+            }
+
+            Properties.Settings.Default.Save();
 
             try
             {
@@ -68,8 +69,8 @@ namespace SRTPluginUIMGUWPF
                 {
                     DispatcherUI.Invoke(delegate
                     {
-                        Windows.CloseAll();
-                        Models.DisposeAll();
+                        Windows.Close();
+                        Models.Dispose();
                     });
                     DispatcherUI.InvokeShutdown();
                 }
@@ -95,44 +96,52 @@ namespace SRTPluginUIMGUWPF
         public static void ShowExceptionMessage(Exception ex) =>
             PluginUI.HostDelegates.ExceptionMessage.Invoke(ex);
 
-        private static void ChangedConfiguration(object sender, PropertyChangedEventArgs e) =>
+        private static void Config_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Config.Transparent))
+                DispatcherUI.Invoke(delegate
+                {
+                    Windows.ReopenMain();
+                });
+
             PluginUI.SaveConfiguration(Config);
+        }
 
         public static class Windows
         {
             private static MainWindow _main;
             public static MainWindow Main
             {
-                get => _main == null ? _main = new MainWindow() : _main;
+                get => _main ??= new MainWindow();
                 set => _main = value;
             }
 
             private static OptionsWindow _options;
             public static OptionsWindow Options
             {
-                get => _options == null ? _options = new OptionsWindow() : _options;
+                get => _options ??= new OptionsWindow();
                 set => _options = value;
             }
 
             private static AboutWindow _about;
             public static AboutWindow About
             {
-                get => _about == null ? _about = new AboutWindow() : _about;
+                get => _about ??= new AboutWindow();
                 set => _about = value;
             }
 
-            public static void CloseAll()
+            public static void Close()
             {
-                CloseWindow(_about);
-                CloseWindow(_options);
-                CloseWindow(_main);
+                Close(_about);
+                Close(_options);
+                Close(_main);
 
                 _about = null;
                 _options = null;
                 _main = null;
             }
 
-            public static void CloseWindow(Window window)
+            public static void Close(Window window)
             {
                 if (window == null)
                     return;
@@ -147,6 +156,15 @@ namespace SRTPluginUIMGUWPF
                     ShowExceptionMessage(ex);
                 }
             }
+
+            public static void ReopenMain()
+            {
+                Close(_main);
+                _main = null;
+
+                Main.AllowsTransparency = Config.Transparent;
+                Main.Show();
+            }
         }
 
         public static class Models
@@ -154,11 +172,11 @@ namespace SRTPluginUIMGUWPF
             private static AppViewModel _appView;
             public static AppViewModel AppView
             {
-                get => _appView == null ? _appView = new AppViewModel() : _appView;
+                get => _appView ??= new AppViewModel();
                 set => _appView = value;
             }
 
-            public static void DisposeAll()
+            public static void Dispose()
             {
                 _appView = null;
             }

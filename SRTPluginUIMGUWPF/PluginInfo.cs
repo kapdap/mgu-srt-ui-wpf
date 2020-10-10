@@ -21,6 +21,6 @@ namespace SRTPluginUIMGUWPF
 
         public int VersionRevision => assemblyFileVersion.ProductPrivatePart;
 
-        private System.Diagnostics.FileVersionInfo assemblyFileVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        private readonly System.Diagnostics.FileVersionInfo assemblyFileVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
     }
 }

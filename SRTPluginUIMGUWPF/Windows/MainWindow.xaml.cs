@@ -13,8 +13,8 @@ namespace SRTPluginUIMGUWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IGameMemoryMGU _gameMemory;
-        private PluginConfig _options;
+        private readonly IGameMemoryMGU _gameMemory;
+        private readonly PluginConfig _options;
 
         private IntPtr _windowEventHook;
         private GCHandle _windowEventGCHandle;
@@ -87,9 +87,6 @@ namespace SRTPluginUIMGUWPF
             catch (Exception) { }
 
             DisableAttactWindow();
-
-            if (Plugin.IsExiting) return;
-            Plugin.Exit();
         }
 
         protected void UpdateAttachWindowPosition()
